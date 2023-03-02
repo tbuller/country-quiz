@@ -1,0 +1,10 @@
+.game-container {
+  display: flex;
+  width: 100%;
+}
+
+.half-container {
+  flex: 1;
+  height: 100%;
+  border: 1px solid black; /* Optional border to show the divs */
+}
