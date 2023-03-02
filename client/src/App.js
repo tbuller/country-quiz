@@ -7,6 +7,7 @@ function App() {
   const [countriesData, setCountriesData] = useState([]);
   const [featuredCountryOne, setFeaturedCountryOne] = useState(0);
   const [featuredCountryTwo, setFeaturedCountryTwo] = useState(0);
+  const [gameover, setGameover] = useState(false);
 
   useEffect(() => {
     setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
@@ -21,14 +22,25 @@ function App() {
   }
 
   const handleFeaturedCountryOne = () => {
+    if (countriesData[featuredCountryTwo].population > countriesData[featuredCountryOne].population) {
+      setGameover(true);
+    }
     setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
   }
 
   const handleFeaturedCountryTwo = () => {
+    if (countriesData[featuredCountryOne].population > countriesData[featuredCountryTwo].population) {
+      setGameover(true);
+    }
     setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
   }
 
-  if (countriesData.length > 0) {
+  if (gameover) {
+    return (
+      <div>Game over</div>
+    )
+  }
+  else if (countriesData.length > 0) {
     return (
     <div className="game-container">
     <div className="half-container" onClick={handleFeaturedCountryOne}>
@@ -36,6 +48,7 @@ function App() {
     <h1 className="country-name">{countriesData[featuredCountryOne].name.common}</h1>
     <div className="capital-city">{countriesData[featuredCountryOne].capital}</div>
     <div className="population">{countriesData[featuredCountryOne].population}</div>
+    <div className="land-area">{countriesData[featuredCountryOne].area} km²</div>
     <div className="flag-container-left" onClick={showCountries}>
     <img src={countriesData[featuredCountryOne].flags.png}></img>
     </div>
@@ -46,6 +59,7 @@ function App() {
     <h1 className="country-name">{countriesData[featuredCountryTwo].name.common}</h1>
     <div className="capital-city">{countriesData[featuredCountryTwo].capital}</div>
     <div className="population">{countriesData[featuredCountryTwo].population}</div>
+    <div className="land-area">{countriesData[featuredCountryTwo].area} km²</div>
     <div className="flag-container-right">
     <img src={countriesData[featuredCountryTwo].flags.png}></img>  
     </div>
