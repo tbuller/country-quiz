@@ -11,8 +11,9 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  border-right: 1px solid black;
+  /* border-right: 1px solid black; */
   color: white;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .half-container:hover {
@@ -27,7 +28,6 @@
   transform: translate(-50%, -50%);
   height: 213px;
   width: 320px;
-  border: 1px solid black;
   font-size: 100px;
 }
 
@@ -36,7 +36,18 @@
   top: 35%;
   left: 75%;
   transform: translate(-50%, -50%);
-  height: 200px;
-  width: 300px;
-  border: 1px solid black;
+  height: 213px;
+  width: 320px;
+}
+
+.flag {
+  border-radius: 12px;
+}
+
+.streak {
+  top: 40%;
+  left: 49.78%;
+  position: absolute;
+  color: white;
+  font-size: 30px;
 }

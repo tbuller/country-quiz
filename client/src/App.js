@@ -8,6 +8,7 @@ function App() {
   const [featuredCountryOne, setFeaturedCountryOne] = useState(0);
   const [featuredCountryTwo, setFeaturedCountryTwo] = useState(0);
   const [gameover, setGameover] = useState(false);
+  const [streak, setStreak] = useState(0);
 
   useEffect(() => {
     setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
@@ -25,6 +26,7 @@ function App() {
     if (countriesData[featuredCountryTwo].population > countriesData[featuredCountryOne].population) {
       setGameover(true);
     }
+    setStreak(streak + 1);
     setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
   }
 
@@ -32,6 +34,7 @@ function App() {
     if (countriesData[featuredCountryOne].population > countriesData[featuredCountryTwo].population) {
       setGameover(true);
     }
+    setStreak(streak + 1);
     setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
   }
 
@@ -50,10 +53,11 @@ function App() {
     <div className="population">{countriesData[featuredCountryOne].population}</div>
     <div className="land-area">{countriesData[featuredCountryOne].area} km²</div>
     <div className="flag-container-left" onClick={showCountries}>
-    <img src={countriesData[featuredCountryOne].flags.png}></img>
+    <img src={countriesData[featuredCountryOne].flags.png} className="flag"></img>
     </div>
     </div>
     </div>
+    <div className="streak">{streak}</div>
     <div className="half-container" onClick={handleFeaturedCountryTwo}>
     <div className="info-container">
     <h1 className="country-name">{countriesData[featuredCountryTwo].name.common}</h1>
@@ -61,7 +65,7 @@ function App() {
     <div className="population">{countriesData[featuredCountryTwo].population}</div>
     <div className="land-area">{countriesData[featuredCountryTwo].area} km²</div>
     <div className="flag-container-right">
-    <img src={countriesData[featuredCountryTwo].flags.png}></img>  
+    <img src={countriesData[featuredCountryTwo].flags.png} className="flag"></img>  
     </div>
     </div>
     </div>
