@@ -66,7 +66,12 @@ function App() {
 
   if (gameover) {
     return (
-      <div>Game over</div>
+      <div className="gameover-page">
+      <div className="gameover-prompt-container">
+      <div className="gameover-prompt">Game over. Click below to try again</div>
+      <button className="try-again-button" onClick={() => window.location.reload()}>Try again</button>
+      </div>
+      </div>
     )
   }
   else if (countriesData.length > 0) {
