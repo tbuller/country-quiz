@@ -27,7 +27,11 @@ function App() {
       setGameover(true);
     }
     setStreak(streak + 1);
-    setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
+    if (Math.random() < 0.5) {
+      setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
+    } else {
+      setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
+    }
   }
 
   const handleFeaturedCountryTwo = () => {
@@ -35,7 +39,11 @@ function App() {
       setGameover(true);
     }
     setStreak(streak + 1);
-    setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
+    if (Math.random() < 0.5) {
+      setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
+    } else {
+      setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
+    }
   }
 
   if (gameover) {
@@ -48,8 +56,8 @@ function App() {
     <div className="game-container">
     <div className="half-container" onClick={handleFeaturedCountryOne}>
     <div className="info-container">
-    <h1 className="country-name">{countriesData[featuredCountryOne].name.common}</h1>
-    <div className="capital-city">{countriesData[featuredCountryOne].capital}</div>
+    <h1 className="country-name-left">{countriesData[featuredCountryOne].name.common}</h1>
+    <div className="capital-city-left">Capital: {countriesData[featuredCountryOne].capital}</div>
     <div className="population">{countriesData[featuredCountryOne].population}</div>
     <div className="land-area">{countriesData[featuredCountryOne].area} km²</div>
     <div className="flag-container-left" onClick={showCountries}>
@@ -60,8 +68,8 @@ function App() {
     <div className="streak">{streak}</div>
     <div className="half-container" onClick={handleFeaturedCountryTwo}>
     <div className="info-container">
-    <h1 className="country-name">{countriesData[featuredCountryTwo].name.common}</h1>
-    <div className="capital-city">{countriesData[featuredCountryTwo].capital}</div>
+    <h1 className="country-name-right">{countriesData[featuredCountryTwo].name.common}</h1>
+    <div className="capital-city-right">Capital: {countriesData[featuredCountryTwo].capital}</div>
     <div className="population">{countriesData[featuredCountryTwo].population}</div>
     <div className="land-area">{countriesData[featuredCountryTwo].area} km²</div>
     <div className="flag-container-right">

@@ -21,6 +21,34 @@
   background-color: rgb(10, 10, 109);
 }
 
+.country-name-left {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.country-name-right {
+  position: absolute;
+  top: 15%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
+.capital-city-left {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.capital-city-right {
+  position: absolute;
+  top: 20%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
 .flag-container-left {
   position: absolute;
   top: 35%;
