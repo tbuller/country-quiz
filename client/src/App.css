@@ -21,6 +21,10 @@
   background-color: rgb(10, 10, 109);
 }
 
+.half-container:active {
+  background-color: rgb(115, 222, 115);
+}
+
 .country-name-left {
   position: absolute;
   top: 15%;
@@ -72,9 +76,23 @@
   border-radius: 12px;
 }
 
+.population-left {
+  position: absolute;
+  top: 55%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.population-right {
+  position: absolute;
+  top: 55%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
 .streak {
-  top: 40%;
-  left: 49.78%;
+  top: 30%;
+  left: 48%;
   position: absolute;
   color: white;
   font-size: 30px;
