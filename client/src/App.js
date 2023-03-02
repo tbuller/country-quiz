@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
+import { RxCross2 } from 'react-icons/rx';
+import { TiTick } from 'react-icons/ti';
 
 function App() {
 
@@ -10,7 +12,7 @@ function App() {
   const [gameover, setGameover] = useState(false);
   const [streak, setStreak] = useState(0);
   const [showPopulation, setShowPopulation] = useState(false);
-  const [correct, setCorrect] = useState(false);
+  const [correct, setCorrect] = useState(true);
 
   useEffect(() => {
     setFeaturedCountryOne(Math.floor(Math.random() * Math.floor(250)));
@@ -25,6 +27,9 @@ function App() {
   }
 
   const handleFeaturedCountryOne = () => {
+    if (countriesData[featuredCountryTwo].population > countriesData[featuredCountryOne].population) {
+      setCorrect(false);
+    }
     setShowPopulation(true);
     setTimeout(() => {
       if (countriesData[featuredCountryTwo].population > countriesData[featuredCountryOne].population) {
@@ -37,10 +42,13 @@ function App() {
       } else {
         setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
       }
-    }, 300)
+    }, 2000)
   }
 
   const handleFeaturedCountryTwo = () => {
+    if (countriesData[featuredCountryOne].population > countriesData[featuredCountryTwo].population) {
+      setCorrect(false);
+    }
     setShowPopulation(true);
     setTimeout(() => {  
       if (countriesData[featuredCountryOne].population > countriesData[featuredCountryTwo].population) {
@@ -53,7 +61,7 @@ function App() {
       } else {
         setFeaturedCountryTwo(Math.floor(Math.random() * Math.floor(250)));
       }
-    }, 2000)   
+    }, 2000)  
   }
 
   if (gameover) {
@@ -68,20 +76,21 @@ function App() {
     <div className="info-container">
     <h1 className="country-name-left">{countriesData[featuredCountryOne].name.common}</h1>
     <div className="capital-city-left">Capital: {countriesData[featuredCountryOne].capital}</div>
-    <div className="population-left" style={{ color: showPopulation ? correct ? "white" : "red" : "transparent" }}>{countriesData[featuredCountryOne].population}</div>
-    <div className="land-area">{countriesData[featuredCountryOne].area} km²</div>
+    <div className="population-left" style={{ color: showPopulation ? correct ? "green" : "red" : "transparent" }}>{Number(countriesData[featuredCountryOne].population).toLocaleString()}</div>
+    {/* <div className="land-area">{countriesData[featuredCountryOne].area} km²</div> */}
     <div className="flag-container-left" onClick={showCountries}>
     <img src={countriesData[featuredCountryOne].flags.png} className="flag"></img>
     </div>
     </div>
     </div>
     <div className="streak">Score: {streak}</div>
+    <div className="answer-validation">{correct && showPopulation ? <TiTick style={{ color: "green" }} /> : showPopulation ? <RxCross2 style={{ color: "red" }} /> : ""}</div>
     <div className="half-container" onClick={handleFeaturedCountryTwo}>
     <div className="info-container">
     <h1 className="country-name-right">{countriesData[featuredCountryTwo].name.common}</h1>
     <div className="capital-city-right">Capital: {countriesData[featuredCountryTwo].capital}</div>
-    <div className="population-right" style={{ color: showPopulation ? correct ? "white" : "red" : "transparent" }}>{countriesData[featuredCountryTwo].population}</div>
-    <div className="land-area">{countriesData[featuredCountryTwo].area} km²</div>
+    <div className="population-right" style={{ color: showPopulation ? correct ? "green" : "red" : "transparent" }}>{Number(countriesData[featuredCountryTwo].population).toLocaleString()}</div>
+    {/* <div className="land-area">{countriesData[featuredCountryTwo].area} km²</div> */}
     <div className="flag-container-right">
     <img src={countriesData[featuredCountryTwo].flags.png} className="flag"></img>  
     </div>
